@@ -32,8 +32,15 @@ app.post('/upload', upload.single('file'), async (req, res) =>{
     res.render('index', { filelink: `${req.headers.origin}/file/${file.id}`})
 })
 
-app.get('/file/:id', (req, res) => {
-    res.send('hosted file')
+app.get('/file/:id', async (req, res) => {
+    const file = await File.findById(req.params.id)
+
+    file.viewCount++
+    await file.save()
+    console.log(file)
+    res.download(file.path, file.originalName)
 })
+
+
 app.post('upload')
 app.listen(process.env.PORT)
