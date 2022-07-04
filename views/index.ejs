@@ -13,8 +13,14 @@
     }
 </style>
 <body>
-    <h1>💾 FileShare</h1>
 
+    <h1>💾 FileShare</h1>
+    <% if (locals.filelink != null){ %>
+        <div style="margin: 1rem;">
+            Your file is succesfully uploaded:
+            <a href="<%= locals.filelink %>"><%= locals.filelink %></a>
+        </div>
+   <% }%>
     <form action="/upload" method="post"
     style='display: grid; gap: .5rem; grid-template-columns: auto 1fr; max-width: 500px; margin: 0 auto; text-align:left;'
     enctype="multipart/form-data">
