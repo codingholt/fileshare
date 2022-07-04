@@ -15,12 +15,14 @@
 <body>
     <h1>💾 FileShare</h1>
 
-    <form style='display: grid; gap: .5rem; grid-template-columns: auto 1fr; max-width: 500px; margin: 0 auto; text-align:left;'>
+    <form action="/upload" method="post"
+    style='display: grid; gap: .5rem; grid-template-columns: auto 1fr; max-width: 500px; margin: 0 auto; text-align:left;'
+    enctype="multipart/form-data">
         <Label for='file'>File</Label>
         <input type="file" id="file" name="file" required>
         <Label for="password">Password</Label>
         <input type="text" id="password" name="password">
-        <button type="submit">Share</button>
+        <button type="submit" style="grid-column: span 2">Share</button>
     </form>
 </body>
 </html>
