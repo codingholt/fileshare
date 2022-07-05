@@ -7,14 +7,54 @@
     <title>FileShare | an Holt app</title>
 </head>
 <style>
-    body{
+
+    
+    html,
+    body {
         font-family: Arial, Helvetica, sans-serif;
+        text-align: center;  
+    }
+    
+    form {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%); /* IE 9 */
+        -webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */
+    }
+    #heading{
+        position: absolute;
+        top: 38%;
+        left: 49%;
+        transform: translate(-40%, -50%);
+        -ms-transform: translate(-40%, -50%); /* IE 9 */
+        -webkit-transform: translate(-40%, -50%); /* Chrome, Safari, Opera */
+    }
+
+    input[type="file"] {
+        display: none;
+    }
+
+    .btn{
+        width: 270px;
+        height: 40px;
+        border: none;
+        outline: none;
+        background: #2f2f2f;
+        color: #fff;
+        font-size: 22px;
+        border-radius: 40px;
         text-align: center;
+        box-shadow: 0 6px 20px -5px rgba(0,0,0,0.4);
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
     }
 </style>
 <body>
-
-    <h1>💾 FileShare</h1>
+    <div class="container">
+    <h1 id="heading">💾 FileShare</h1>
     <% if (locals.filelink != null){ %>
         <div style="margin: 1rem;">
             Your file is succesfully uploaded:
@@ -24,11 +64,12 @@
     <form action="/upload" method="post"
     style='display: grid; gap: .5rem; grid-template-columns: auto 1fr; max-width: 500px; margin: 0 auto; text-align:left;'
     enctype="multipart/form-data">
-        <Label for='file'>File</Label>
-        <input type="file" id="file" name="file" required>
-        <Label for="password">Password</Label>
-        <input type="text" id="password" name="password">
-        <button type="submit" style="grid-column: span 2">Share</button>
+        <Label class='btn' for='file'>File</Label>
+        <input type="file"  id="file" name="file" required>
+        <!-- <Label for="password">Password</Label>
+        <input type="text" id="password" name="password"> -->
+        <button class='btn' type="submit" style="grid-column: span 2">Share</button>
     </form>
+</div>
 </body>
 </html>

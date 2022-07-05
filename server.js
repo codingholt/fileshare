@@ -22,9 +22,9 @@ app.post('/upload', upload.single('file'), async (req, res) =>{
         originalName: req.file.originalname,
 
     } 
-    if(req.body.password != null && req.body.password !== ""){
-        fileData.password = await bcrypt.hash(req.body.password, 10)
-    }
+    // if(req.body.password != null && req.body.password !== ""){
+    //     fileData.password = await bcrypt.hash(req.body.password, 10)
+    // }
 
     const file = await File.create(fileData)
 
@@ -37,7 +37,7 @@ app.get('/file/:id', async (req, res) => {
 
     file.viewCount++
     await file.save()
-    console.log(file)
+    // console.log(file)
     res.download(file.path, file.originalName)
 })
 
